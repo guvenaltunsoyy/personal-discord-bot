@@ -2,7 +2,7 @@ const fs = require('fs');
 const Discord = require('discord.js');
 const request = require('request');
 const { prefix } = require('./config.json');
-const { DISCORD_APP_TOKEN, AUTHOR, CLOUD_HUBs } = process.env;
+const { DISCORD_APP_TOKEN, AUTHOR, CLOUD_HUB } = process.env;
 const { Utils } = require('./app/utils');
 // importing express framework
 const express = require('express');
@@ -99,22 +99,20 @@ client.on('message', (message) => {
 // Respond with "hello world" for requests that hit our root "/"
 app.get('/', function (req, res) {
 	console.log('Server is running');
-	return res.send('Server is available. \nSTATUS: 200 OK ✅\n');
+	return res.send('STATUS: 200 OK ✅');
 });
 // listen to port 7000 by default
 app.listen(process.env.PORT || 7000, () => {
 	console.log('Server is running. Server info');
 	const utilsInstance = new Utils();
 	utilsInstance.stringToEmojiCharacters('Server is running. Server info');
-	console.log({ AUTHOR, CLOUD_HUB, COMPANY_NAME });
+	console.log({ AUTHOR, CLOUD_HUB });
 	setInterval(() => {
 		if (!user) {
-			user = client.users.find(
-				(element) => element.username === 'Güven ALTUNSOY',
-			);
+			user = client.users.get('394027875042459648');
 		}
 		request(
-			'https://shopi-discord-bot-app.herokuapp.com/',
+			'https://personal-discord-bot-app.herokuapp.com/',
 			{ json: true },
 			(err, res, body) => {
 				try {
@@ -128,6 +126,6 @@ app.listen(process.env.PORT || 7000, () => {
 				}
 			},
 		);
-	}, 600000);
+	}, 3000000);
 });
 module.exports = app;
