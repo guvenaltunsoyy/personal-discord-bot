@@ -2,7 +2,7 @@ const fs = require('fs');
 const Discord = require('discord.js');
 const request = require('request');
 const { prefix } = require('./config.json');
-const { DISCORD_APP_TOKEN, AUTHOR, CLOUD_HUB, COMPANY_NAME } = process.env;
+const { DISCORD_APP_TOKEN, AUTHOR, CLOUD_HUBs } = process.env;
 const { Utils } = require('./app/utils');
 // importing express framework
 const express = require('express');

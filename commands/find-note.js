@@ -1,6 +1,7 @@
 module.exports = {
-	name: 'naber',
-	description: 'Say hi.',
+	name: 'find',
+	aliases: ['find', 'note', 'key'],
+	description: 'Find note',
 	execute(message) {
 		message.channel.fetchMessages().then(async (messages) => {
 			console.log(`${messages.size} procuradas.`);
@@ -23,6 +24,7 @@ module.exports = {
 
 			console.log(finalArray);
 			console.log(finalArray.length);
+			message.reply(finalArray);
 		});
 	},
 };
