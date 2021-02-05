@@ -112,7 +112,7 @@ app.listen(process.env.PORT || 7000, () => {
 			user = client.users.get('394027875042459648');
 		}
 		request(
-			'https://personal-discord-bot-app.herokuapp.com/',
+			'https://personal-discord-app.herokuapp.com',
 			{ json: true },
 			(err, res, body) => {
 				try {
