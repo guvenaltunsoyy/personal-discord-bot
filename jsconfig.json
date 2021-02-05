@@ -1,0 +1,9 @@
+{
+	"compilerOptions": {
+		"baseUrl": "app",
+		"module": "commonjs",
+		"target": "es2016"
+	},
+	"include": ["app"],
+	"exclude": ["node_modules", "**/node_modules/*"]
+}
