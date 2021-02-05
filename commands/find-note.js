@@ -2,29 +2,31 @@ module.exports = {
 	name: 'find',
 	aliases: ['find', 'note', 'key'],
 	description: 'Find note',
-	execute(message) {
-		message.channel.fetchMessages().then(async (messages) => {
-			console.log(`${messages.size} procuradas.`);
-
-			let finalArray = [];
-
-			const putInArray = async (data) => finalArray.push(data);
-			const handleTime = (timestamp) =>
-				moment(timestamp)
-					.format('DD/MM/YYYY - hh:mm:ss a')
-					.replace('pm', 'PM')
-					.reaplce('am', 'AM');
-
-			for (const message of messages.array().reverse())
-				await putInArray(
-					`${handleTime(message.timestamp)} ${
-						msg.author.username
-					} : ${msg.content}`,
-				);
-
-			console.log(finalArray);
-			console.log(finalArray.length);
-			message.reply(finalArray);
+	execute(message, args) {
+		if (!args || args.length === 0) {
+			message.channel.send('Where is key?🤯 use help command! => !help');
+			return;
+		}
+		message.guild.channels.cache.forEach(async (channel) => {
+			if (channel.type === 'text') {
+				channel.messages.fetch().then((messages) => {
+					messages.forEach((msg) => {
+						if (
+							!msg.author.bot &&
+							msg.content.includes(args[0]) &&
+							!msg.content.includes('!find')
+						) {
+							message.channel.send(
+								`${new Date(
+									msg.createdTimestamp,
+								).toLocaleDateString('tr-TR')} - ${
+									msg.content
+								}`,
+							);
+						}
+					});
+				});
+			}
 		});
 	},
 };

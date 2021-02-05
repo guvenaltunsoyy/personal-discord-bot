@@ -126,6 +126,6 @@ app.listen(process.env.PORT || 7000, () => {
 				}
 			},
 		);
-	}, 3000000);
+	}, 600000);
 });
 module.exports = app;
