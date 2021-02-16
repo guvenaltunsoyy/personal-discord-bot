@@ -22,7 +22,7 @@ for (const file of commandFiles) {
 }
 client.once('ready', () => {
 	const guven = client.users.cache.find(
-		(element) => element.username === 'Güven ALTUNSOY',
+		(element) => element.username === 'boss',
 	);
 	console.log({ guven });
 	user = guven;
